@@ -155,19 +155,12 @@ class _LeanSpectrumBar extends StatelessWidget {
     // Must match the backend's allowed lean values exactly
     // (Center, Lean Left, Left, Lean Right, Right) or outlets silently
     // drop out of this bar with no color, which was the original bug.
-    final leanOrder = [
-      'Left',
-      'Lean Left',
-      'Center',
-      'Lean Right',
-      'Right',
-    ];
+    final leanOrder = ['Left', 'Lean Left', 'Center', 'Lean Right', 'Right'];
     final counts = <String, int>{};
     for (final o in outlets) {
       final lean = (o['lean'] ?? '').trim().isEmpty ? 'Center' : o['lean']!;
       counts[lean] = (counts[lean] ?? 0) + 1;
     }
-    final total = outlets.length;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
