@@ -12,11 +12,14 @@ permissions:
 jobs:
   flutter:
     name: Flutter analyze and test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: Truth App
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
@@ -35,22 +38,24 @@ jobs:
 
   backend:
     name: Backend syntax check
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: Truth App/backend
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
-          cache-dependency-path: backend/package-lock.json
+          cache-dependency-path: Truth App/backend/package-lock.json
 
       - name: Install backend dependencies
-        working-directory: backend
         run: npm ci
 
       - name: Check server syntax
-        run: node --check backend/server.mjs
+        run: node --check server.mjs
