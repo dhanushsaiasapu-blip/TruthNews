@@ -30,3 +30,8 @@ ios/Flutter/ephemeral/
 backend/node_modules/
 node_modules/
 .env
+# Android release signing secrets
+android/key.properties
+*.jks
+*.keystore
+android/local.properties

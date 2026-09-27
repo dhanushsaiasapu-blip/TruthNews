@@ -17,22 +17,9 @@ class NewsServiceException implements Exception {
 class LiveNewsService {
   LiveNewsService._();
 
-  // The production backend is the default so release APKs work even when
-  // the app is launched without a --dart-define. A dart-define can still
-  // override this for local/staging development.
-  static const String _defaultBaseUrl =
-      'https://truth-news-api.onrender.com';
-
-  static const String _configuredBaseUrl = String.fromEnvironment(
-    'BACKEND_BASE_URL',
-    defaultValue: _defaultBaseUrl,
-  );
-
-  static String get baseUrl {
-    final configured = _configuredBaseUrl.trim();
-    final value = configured.isEmpty ? _defaultBaseUrl : configured;
-    return value.replaceFirst(RegExp(r'/+$'), '');
-  }
+  // Production backend URL is compiled directly into the app so Android
+  // APK/AAB releases do not depend on --dart-define configuration.
+  static const String baseUrl = 'https://truth-news-api.onrender.com';
 
   static bool get isConfigured {
     final uri = Uri.tryParse(baseUrl);
