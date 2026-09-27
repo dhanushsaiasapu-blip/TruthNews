@@ -1,4 +1,4 @@
-storeFile=../truth-upload-keystore.jks
-storePassword=CHANGE_ME
-keyAlias=truth-upload
-keyPassword=CHANGE_ME
+storePassword=YOUR_STORE_PASSWORD
+keyPassword=YOUR_KEY_PASSWORD
+keyAlias=truth
+storeFile=C:\\path\\to\\truth-upload-key.jks
